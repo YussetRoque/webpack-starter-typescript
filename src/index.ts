@@ -2,6 +2,7 @@
 
 
 import db from './firebase/config';
+import { retornaDocumentos } from './helpers/mostrar-documentos';
 
 const usuario = {
     nombre: 'Juana',
@@ -45,18 +46,45 @@ const usuariosRef = db.collection('usuarios');
 //    .catch( e => console.log('error', e ));
 
 // select * from usuarios; 
-usuariosRef
-  .onSnapshot( snap => {
+//  usuariosRef
+//  usuariosRef.get().then( retornaDocumentos );
 
-    const usuarios: any[] = [];
+/* 
+select * from usuarios
+      where activo = true
 
-      snap.forEach( snaphijo => {
-         usuarios.push({ 
-            id: snaphijo.id,
-            ...snaphijo.data()
-         }) 
-        
-      });
+*/   
 
-      console.log(usuarios)
-  })
+// usuariosRef.where('activo', '==', true).get().then( retornaDocumentos );
+
+
+/* 
+select * from usuarios
+      where activo = true
+
+*/   
+
+// usuariosRef.where('salario', '>', 1800)
+ //  .get().then( retornaDocumentos );
+   
+  /* 
+select * from usuarios
+      where salario > 1800 and salario < 2300
+       where salario  between 1800 and 2300
+
+*/   
+
+// usuariosRef.where('salario', '>=', 1800 )
+  //      .where('salario', '<=', 2300 )
+// .get().then( retornaDocumentos );
+
+/* 
+select * from usuarios
+      where salario > 1800 
+       And activo == true 
+
+*/   
+
+usuariosRef.where('salario', '>=', 1800 )
+        .where('activo', '==', true )
+    .get().then( retornaDocumentos );
