@@ -10,6 +10,8 @@ const usuario = {
 
 }
 
+const usuariosRef = db.collection('usuarios');
+
 // insert into usuarios ......
 
 // db.collection('usuarios')
@@ -18,5 +20,20 @@ const usuario = {
 //        console.log( docRef.delete() )
 
  //   })
-
  //   .catch( e => console.log ('error', e ))
+
+ // update usuarios set activo = false where...
+ // usuariosRef
+ // .doc('sr1CiE5JqB55dPCYVcPY')
+// .update({
+ //   activo: true
+// });
+
+// Destructivo 
+// usuariosRef
+ // .doc('sr1CiE5JqB55dPCYVcPY')
+// . set({
+// activo: true,
+//   edad: 44,
+   
+// });  
